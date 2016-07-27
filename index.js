@@ -19,6 +19,32 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+  },
+  push: {
+    android: {
+      senderId: process.env.ANDROID_SENDER_ID || '', // The Sender ID of GCM
+      apiKey: process.env.ANDROID_API_KEY || '' // The Server API Key of GCM
+    },
+    /*ios: {
+      pfx: '', // The filename of private key and certificate in PFX or PKCS12 format from disk  
+      passphrase: '', // optional password to your p12
+      cert: '', // If not using the .p12 format, the path to the certificate PEM to load from disk
+      key: '', // If not using the .p12 format, the path to the private key PEM to load from disk
+      bundleId: '', // The bundle identifier associate with your app
+      production: false // Specifies which environment to connect to: Production (if true) or Sandbox
+    },*/
+    /*ios: [
+      {
+        pfx: '', // Dev PFX or P12
+        bundleId: '',
+        production: false // Dev
+      },
+      {
+        pfx: '', // Prod PFX or P12
+        bundleId: '',  
+        production: true // Prod
+      }
+    ]*/
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
